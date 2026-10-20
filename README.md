@@ -157,6 +157,8 @@
 
 6. **修改外设配置**（可选）：用 STM32CubeMX 打开 `KEY_LED.ioc` 调整引脚/外设/时钟，重新生成代码；源文件列表在 `cmake/stm32cubemx/` 下，新增源文件后重新 configure 即可。
 
+7. **串口调试**：推荐开源的 [SerialWeb](https://conductance-lab.xyz/)（电导实验室，AGPL-3.0）——基于 Web Serial API 的网页版串口调试与图形解析工具，单 HTML 文件、免安装，Chrome/Edge 打开即用，支持数据分帧、协议解析与实时绘图，配合板上 CH340C 串口使用非常顺手。
+
 ## 开发规范
 
 本仓库代码遵循 `AI_Development/个人编程代码规范.md`
