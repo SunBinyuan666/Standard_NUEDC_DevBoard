@@ -25,6 +25,12 @@
 |---|---|
 | ![PCB顶层](PCB工程文件/PCB_TOP.png) | ![PCB底层](PCB工程文件/PCB_BOTTOM.png) |
 
+### 3D 预览
+
+| 顶层（TOP） | 底层（BOTTOM） |
+|---|---|
+| ![PCB 3D顶层](PCB工程文件/PCB_3D_top.png) | ![PCB 3D底层](PCB工程文件/PCB_3D_Bottom.png) |
+
 ### 电源
 
 - 输入三选一（合路共网，无防反灌设计）：DC005 插座 / XH2.54-5.0 接线端子 / 两路 Type-C VBUS
