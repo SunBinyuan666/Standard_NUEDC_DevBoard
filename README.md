@@ -9,7 +9,7 @@
 
 | 目录 | 内容 |
 |---|---|
-| `PCB工程文件/` | 立创EDA专业版工程（.epro2）、BOM、网表、PCB PDF |
+| `PCB工程文件/` | 立创EDA专业版工程（.epro2）、BOM、网表、PCB PDF、顶层/底层渲染图 |
 | `原理图/` | 原理图 PDF（3 页：主控 / 电源 / 接口） |
 | `Code_Demo/` | 5 个 VSCode + CMake + arm-none-eabi-gcc 示例工程（含 HAL 库，克隆即编译） |
 | `AI_Development/` | 全部元器件引脚连接方式文档、个人 C 编程规范、Keil 移植踩坑笔记 |
@@ -18,6 +18,12 @@
 硬件数据手册因体积与版权原因不上传，元器件型号见 BOM（`PCB工程文件/BOM_*.xlsx`），手册请到立创商城 / 厂商官网查询。
 
 ## 板载资源
+
+### PCB 预览
+
+| 顶层（TOP） | 底层（BOTTOM） |
+|---|---|
+| ![PCB顶层](PCB工程文件/PCB_TOP.png) | ![PCB底层](PCB工程文件/PCB_BOTTOM.png) |
 
 ### 电源
 
