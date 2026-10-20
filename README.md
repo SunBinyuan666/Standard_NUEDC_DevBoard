@@ -25,6 +25,16 @@
 |---|---|
 | ![PCB顶层](PCB工程文件/PCB_TOP.png) | ![PCB底层](PCB工程文件/PCB_BOTTOM.png) |
 
+### 原理图
+
+| 页 | 内容 |
+|---|---|
+| 第 1 页 | ![原理图第1页·主控](原理图/SCH_1_Main.png) |
+| 第 2 页 | ![原理图第2页·电源](原理图/SCH_2_Power.png) |
+| 第 3 页 | ![原理图第3页·接口](原理图/SCH_3_Interface.png) |
+
+高清 PDF 版本见 [原理图/SCH_Standard NUEDC DevBoard.pdf](原理图/SCH_Standard%20NUEDC%20DevBoard.pdf)。
+
 ### 3D 预览
 
 | 顶层（TOP） | 底层（BOTTOM） |
