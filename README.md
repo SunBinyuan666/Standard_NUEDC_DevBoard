@@ -40,7 +40,7 @@
 
 ## 开发规范
 
-本仓库代码遵循 `AI_Development/个人编程代码规范.md`（由公司规范脱敏而来的个人版，对齐 MISRA C:2023 / BARR-C:2018）。
+本仓库代码遵循 `AI_Development/个人编程代码规范.md`
 
 ## License
 
