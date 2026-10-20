@@ -1,0 +1,22 @@
+# 构建产物（configure 后可重新生成）
+Code_Demo/*/build/
+*.o
+*.d
+*.elf
+*.bin
+*.hex
+*.map
+*.lst
+
+# IDE / 编辑器本地缓存
+.vscode/
+.settings/
+*.bak
+fp-info-cache
+__pycache__/
+
+# 硬件手册（体积大、厂商版权，不上传；型号见 BOM）
+硬件手册/
+
+# 立创EDA备份
+*.epro2.bak

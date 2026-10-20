@@ -1,0 +1,9 @@
+si SWD
+speed 4000
+device STM32F103VE
+r
+h
+loadfile build/Debug/LED_HEARTBEAT.hex
+r
+g
+exit
