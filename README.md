@@ -105,6 +105,58 @@
 
 烧录：J-Link SWD（工程内附 .jlink 脚本）。
 
+## 工程配置流程（从克隆到运行）
+
+以 `Code_Demo/KEY_LED` 为例，5 个示例工程步骤完全一致：
+
+1. **安装工具链**（一次性）
+   - VSCode + STM32Cube 插件（`stm32-vscode-extension`）
+   - arm-none-eabi-gcc（GCC ARM Embedded，建议 13.x 及以上）
+   - CMake ≥ 3.22、Ninja
+   - J-Link 软件包（含 `JLink.exe` / `JLinkGDBServer`）
+
+2. **克隆仓库**，进入任一示例工程目录，如 `Code_Demo/KEY_LED`。工程结构：
+
+   ```
+   KEY_LED/
+   ├── CMakeLists.txt          # 根 CMake（用户可编辑，含用户扩展区域）
+   ├── CMakePresets.json       # Debug / Release 预设，生成器 Ninja
+   ├── cmake/
+   │   ├── gcc-arm-none-eabi.cmake   # 交叉编译工具链文件
+   │   └── stm32cubemx/        # 源文件、include、宏定义（迁移自动生成）
+   ├── Core/  Drivers/         # HAL 库 + 用户代码
+   ├── STM32F103VE_FLASH.ld    # 链接脚本（512K Flash / 64K RAM）
+   ├── KEY_LED.ioc             # CubeMX 工程（改外设配置用）
+   └── flash.jlink             # J-Link 烧录脚本
+   ```
+
+3. **Configure**：在工程根目录执行一次（`build/` 不入库，克隆后必须重新生成）：
+
+   ```bash
+   cmake --preset Debug
+   ```
+
+   工具链由 `cmake/gcc-arm-none-eabi.cmake` 自动查找；若 gcc 不在 PATH，在 VSCode 的 STM32Cube 插件设置里指定工具链路径即可。
+
+4. **编译**：
+
+   ```bash
+   cmake --build build/Debug
+   ```
+
+   产物在 `build/Debug/`（.elf/.hex/.bin），编译数据库 `compile_commands.json` 供 clangd/IntelliSense 使用。
+
+5. **烧录**（J-Link SWD 接板上 4 针调试口）：
+
+   ```bash
+   JLink -CommanderScript flash.jlink        # 只烧 app
+   # 或完整擦除+烧录：JLink -CommanderScript flash_full.jlink
+   ```
+
+   也可直接用 VSCode 任务（`.vscode/tasks.json` 已配置一键编译/烧录）。
+
+6. **修改外设配置**（可选）：用 STM32CubeMX 打开 `KEY_LED.ioc` 调整引脚/外设/时钟，重新生成代码；源文件列表在 `cmake/stm32cubemx/` 下，新增源文件后重新 configure 即可。
+
 ## 开发规范
 
 本仓库代码遵循 `AI_Development/个人编程代码规范.md`
