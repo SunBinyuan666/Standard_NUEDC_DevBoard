@@ -28,7 +28,8 @@ add_subdirectory(cmake/stm32cubemx)
 
 # ---- 用户扩展区域 ----
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    # 在此添加新的 .c 文件
+    Core/Src/motor_tb6612.c
+    Core/Src/motor_test.c
 )
 
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE

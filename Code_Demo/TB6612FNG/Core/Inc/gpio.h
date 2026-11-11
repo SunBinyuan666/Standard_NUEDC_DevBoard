@@ -1,23 +1,16 @@
+/*******************************************************************************
+ * @file      gpio.h
+ * @author    Sunbinyuan（EEE2409036@xmu.edu.my）
+ * @version   V1.0.0
+ * @date      2026-11-12
+ * @brief     GPIO初始化接口
+ *
+ * @history   V1.0.0 首版: 添加GPIO初始化声明                ---2026-11-12
+ ******************************************************************************/
 /* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * @file    gpio.h
-  * @brief   This file contains all the function prototypes for
-  *          the gpio.c file
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2026 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+/* 注: 文件信息见顶部规范文件头 (个人编程代码规范) */
 /* USER CODE END Header */
-/* Define to prevent recursive inclusion -------------------------------------*/
+
 #ifndef __GPIO_H__
 #define __GPIO_H__
 
@@ -25,25 +18,14 @@
 extern "C" {
 #endif
 
-/* Includes ------------------------------------------------------------------*/
+/* 头文件包含 -----------------------------------------------------------------*/
 #include "main.h"
 
-/* USER CODE BEGIN Includes */
-
-/* USER CODE END Includes */
-
-/* USER CODE BEGIN Private defines */
-
-/* USER CODE END Private defines */
-
+/* 函数声明 -------------------------------------------------------------------*/
 void MX_GPIO_Init(void);
-
-/* USER CODE BEGIN Prototypes */
-
-/* USER CODE END Prototypes */
 
 #ifdef __cplusplus
 }
 #endif
-#endif /*__ GPIO_H__ */
 
+#endif /* __GPIO_H__ */
