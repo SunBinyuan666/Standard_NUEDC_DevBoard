@@ -1,13 +1,14 @@
 /*******************************************************************************
  * @file      app_servo.c
  * @author    Sunbinyuan（EEE2409036@xmu.edu.my）
- * @version   V1.0.1
- * @date      2026-10-20
+ * @version   V1.0.2
+ * @date      2026-11-09
  * @brief     SG90舵机控制模块实现: TIM3 1us/tick, 比较值单位即us,
  *           换算公式 pulse = min + (angle*(max-min)+90)/180 (四舍五入)
-
+ *
  * @note     PWM由定时器硬件持续输出, 主循环只改比较值, 禁止忙等生成波形
- * @history   V1.0.1 端点堵转嗡鸣, 脉宽边界收窄至1150~1850us      ---2026-10-20
+ * @history   V1.0.2 4.6V供电行程不足, 脉宽放宽回1000~2000us      ---2026-11-09
+ *            V1.0.1 端点堵转嗡鸣, 脉宽边界收窄至1150~1850us      ---2026-10-20
  *            V1.0.0 首版: 角度限幅+线性脉宽换算+比较值更新         ---2026-10-20
  ******************************************************************************/
 #include "app_servo.h"
@@ -25,7 +26,7 @@ static uint16_t g_servo_angle = SERVO_DEFAULT_ANGLE; /* 当前目标角度(度) 
  **************************************/
 static uint32_t app_servo_angle_to_pulse(uint16_t angle_deg)
 {
-    uint32_t span = SERVO_MAX_PULSE_US - SERVO_MIN_PULSE_US; /* 700us */
+    uint32_t span = SERVO_MAX_PULSE_US - SERVO_MIN_PULSE_US; /* 1000us */
     uint32_t pulse;
 
     /* angle<=180, span=1000: 128*180*1000 = 23,040,000 < 2^32, 安全 */
