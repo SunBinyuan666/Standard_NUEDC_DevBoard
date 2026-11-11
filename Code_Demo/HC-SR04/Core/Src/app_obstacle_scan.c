@@ -1,7 +1,7 @@
 /***********************************************************************************
  * @file      app_obstacle_scan.c
  * @author    Sunbinyuan（EEE2409036@xmu.edu.my）
- * @version   V2.0.0
+ * @version   V1.0.0
  * @date      2026-11-11
  * @brief     超声波扫描避障状态机(设计要求§6/§6.5)
  *           INIT->CENTER_SETTLE->CENTER_MEASURE
@@ -15,7 +15,6 @@
  *           依次测左/右并转向更开阔一侧; 三方向均无效时LED5快闪
  *           并在安全角度等待重试; 任何状态不长时间阻塞。
  * @history   V1.0.0 首版: 全状态机+中值滤波+滞回判定+平局保持      ---2026-11-11
- *           V2.0.0 改硬件IIC: 触发间隔60->200ms(模块手册要求)     ---2026-11-11
  **********************************************************************************/
 #include "app_obstacle_scan.h"
 #include "app_hcsr04.h"
@@ -30,7 +29,7 @@
 #define SCAN_ANGLE_LEFT_DEG       70U   /* 左侧角度: 中位-20度(首版保守) */
 #define SCAN_ANGLE_RIGHT_DEG      110U  /* 右侧角度: 中位+20度 */
 #define SCAN_SERVO_SETTLE_MS     200U   /* 舵机换向后稳定等待(ms) */
-#define SCAN_TRIG_INTERVAL_MS    200U  /* 两次测距最小间隔(ms), IIC模式手册要求 */
+#define SCAN_TRIG_INTERVAL_MS     60U   /* 两次TRIG最小间隔(ms) */
 #define SCAN_SAMPLES_PER_DIR       3U   /* 每方向采样次数, 取中值 */
 #define SCAN_HOLD_MS            1000U   /* 方向保持时间(ms), 期满复测 */
 #define SCAN_RECHECK_MS         5000U   /* 前方畅通时复测周期(ms) */
@@ -200,7 +199,7 @@ static dir_result_t scan_classify(const dir_measure_t *dm)
 
 /*************************************
  * 函数名称 ： scan_dir_measure_step
- * 描述     ： 单方向测量子状态机: 等间隔触发(>=200ms)->轮询完成/
+ * 描述     ： 单方向测量子状态机: 等间隔触发(>=60ms)->轮询完成/
  *             超时->存样本, 采满3次返回1
  * 输入     ： 无
  * 输出     ： 无
@@ -225,7 +224,7 @@ static uint8_t scan_dir_measure_step(void)
         return 0U;
     }
 
-    /* phase 1: 轮询本次测量结果(IIC版: 触发后250ms内等待) */
+    /* phase 1: 轮询本次测量结果 */
     poll = app_hcsr04_poll();
     if (poll == HCSR04_POLL_BUSY)
     {
