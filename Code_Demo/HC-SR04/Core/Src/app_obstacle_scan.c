@@ -34,7 +34,7 @@
 #define SCAN_SERVO_SETTLE_MS     300U   /* 舵机换向后稳定等待(ms), 摆幅加大取余量 */
 #define SCAN_TRIG_INTERVAL_MS     60U   /* 两次TRIG最小间隔(ms) */
 #define SCAN_SAMPLES_PER_DIR       3U   /* 每方向采样次数, 取中值 */
-#define SCAN_HOLD_MS            1000U   /* 方向保持时间(ms), 期满复测 */
+#define SCAN_HOLD_MS            5000U   /* 方向保持时间(ms), 期满复测 */
 #define SCAN_RECHECK_MS         5000U   /* 前方无物体时复测周期(ms) */
 #define SCAN_NO_WAY_RETRY_MS    2000U   /* 两侧都有物体重试间隔(ms) */
 #define SCAN_OBSTACLE_CM         25U   /* 有物体阈值(cm): 低于此判有物体 */
