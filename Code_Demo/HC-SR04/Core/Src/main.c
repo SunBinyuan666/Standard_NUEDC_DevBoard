@@ -7,7 +7,7 @@
  * @version   V1.0.0
  * @date      2026-11-11
  * @brief     HC-SR04+SG90超声波扫描避障主程序
- *           初始化链: 时钟->GPIO->TIM3 PWM->TIM4 IC->LED->按键->扫描状态机
+ *           初始化链: 时钟->GPIO->I2C2->TIM3 PWM->LED->按键->扫描状态机
  *
  * @note      预期现象(设计要求§3.1):
  *           1.上电舵机回中(90度/1500us), LED5慢速心跳;
@@ -22,6 +22,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "gpio.h"
+#include "i2c.h"
 #include "tim.h"
 #include "app_hcsr04.h"
 #include "app_servo.h"
@@ -68,8 +69,8 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_I2C2_Init();
   MX_TIM3_Init();
-  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
   app_led_init();
   app_button_init();

@@ -199,17 +199,5 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /* USER CODE BEGIN 1 */
-#include "tim.h"
 
-/*************************************
- * 函数名称 ： TIM4_IRQHandler
- * 描述     ： TIM4全局中断: 转交HAL处理输入捕获事件
- * 输入     ： 无
- * 输出     ： 无
- * 返回     ： 无
- **************************************/
-void TIM4_IRQHandler(void)
-{
-  HAL_TIM_IRQHandler(&htim4);
-}
 /* USER CODE END 1 */

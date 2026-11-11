@@ -6,7 +6,7 @@
  * @brief     工程公共引脚定义与全局错误处理接口
  *
  * @note      引脚分配(设计要求§4表):
- *           PA6=TIM3_CH1舵机PWM / PB0=TRIG / PB9=TIM4_CH4 ECHO
+ *           PA6=TIM3_CH1舵机PWM / PB10=I2C2_SCL / PB11=I2C2_SDA(超声波)
  *           PB6=LED3 / PB7=LED4 / PD8=LED5(均低电平点亮)
  *           PE13=SW2 / PE14=SW3 / PE15=SW4(输入上拉低有效)
  * @history   V1.0.0 首版: 引脚宏集中定义                      ---2026-11-11
@@ -27,8 +27,7 @@ void Error_Handler(void);
 /* ==========================================================================
  *  引脚定义(设计要求§4)
  * ========================================================================== */
-#define HCSR04_TRIG_Pin        GPIO_PIN_0
-#define HCSR04_TRIG_GPIO_Port  GPIOB     /* TRIG: PB0推挽输出 */
+/* 超声波走I2C2硬件IIC: PB10=SCL/PB11=SDA(i2c.c配置), 无GPIO引脚 */
 
 #define LED3_Pin               GPIO_PIN_6
 #define LED3_GPIO_Port         GPIOB     /* LED3: PB6低亮 */
