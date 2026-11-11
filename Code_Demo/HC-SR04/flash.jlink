@@ -1,0 +1,9 @@
+si SWD
+speed 4000
+device STM32F103VE
+r
+h
+loadfile build/Debug/HC-SR04.hex
+r
+g
+exit
