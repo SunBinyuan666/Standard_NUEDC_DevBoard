@@ -16,8 +16,8 @@
 #include <stddef.h>
 
 /* 私有常量 -------------------------------------------------------------------*/
-#define TEST_SPEED_20_PERCENT      (200)
-#define TEST_SPEED_50_PERCENT      (500)
+#define TEST_SPEED_20_PERCENT      (400)
+#define TEST_SPEED_80_PERCENT      (800)
 #define TEST_INITIAL_STOP_MS       (1000U)
 #define TEST_RUN_MS                (2000U)
 #define TEST_STOP_MS               (500U)
@@ -44,7 +44,7 @@ static const MotorTestStep_t s_test_steps[] =
     {0, -TEST_SPEED_20_PERCENT, TEST_RUN_MS, true},
     {0, 0, TEST_STOP_MS, true},
     {TEST_SPEED_20_PERCENT, TEST_SPEED_20_PERCENT, TEST_RUN_MS, true},
-    {TEST_SPEED_50_PERCENT, TEST_SPEED_50_PERCENT, TEST_RUN_MS, true},
+    {TEST_SPEED_80_PERCENT, TEST_SPEED_80_PERCENT, TEST_RUN_MS, true},
     {0, 0, 0U, false}
 };
 
